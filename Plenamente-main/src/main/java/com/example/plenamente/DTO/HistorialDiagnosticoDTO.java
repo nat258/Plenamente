@@ -17,4 +17,6 @@ public class HistorialDiagnosticoDTO {
     private String diagnosticoId;
     private Integer pacienteId;
 
+
+    //duda
 }

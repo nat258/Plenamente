@@ -13,10 +13,6 @@ public class ReservaHoraService {
 
 
 
-
-
-
-
     //convertir a dto
     private ReservaHoraDTO convertirADTO(ReservaHora reserva) {
     ReservaHoraDTO dto = new ReservaHoraDTO();
