@@ -1,15 +1,20 @@
 package com.example.plenamente.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.plenamente.DTO.PacienteDTO;
 import com.example.plenamente.model.Paciente;
+import com.example.plenamente.repository.PsicologoRepositary;
 
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 public class PacienteService {
+
+    @Autowired
+    private PsicologoRepositary psicologoRepositary;
 
 
 

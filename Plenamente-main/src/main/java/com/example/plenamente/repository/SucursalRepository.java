@@ -9,11 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.example.plenamente.model.Psicologo;
 import com.example.plenamente.model.Sucursal;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 6d0dd7193fe4b2db7b3f160bf9c7c7799edb7828
 
 @Repository
 public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
