@@ -9,7 +9,7 @@ public interface EspecialidadRepository extends JpaRepository<Especialidad,Integ
 
     //Busqueda de especialidad por coincidencia parcial ( ignora mayusculas y minusculas)
     List<Especialidad> findByNombreContainingIgnoreCase(String nombre);
-    //Buscar todas las especialidades que tiene un Psicologo especifico
+    //Buscar todas las especialidades que tiene un Psicologo especifico 
     List<Especialidad> findByPsicologosId(Integer idPsicologo);
 
     
