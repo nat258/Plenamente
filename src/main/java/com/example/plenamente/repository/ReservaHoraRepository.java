@@ -1,6 +1,7 @@
 package com.example.plenamente.repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -14,14 +15,15 @@ import com.example.plenamente.model.ReservaHora;
 @Repository
 public interface ReservaHoraRepository extends JpaRepository<ReservaHora, Integer> {
 
+    List<ReservaHora> findByPsicologoIdAndFechaHora(Integer psicologoId, LocalDateTime fechaHora);
+
     //busca las reservas del cliente por el rut
     @Query("SELECT r FROM ReservaHora r JOIN r.paciente p WHERE p.rut = :rut")
     List<ReservaHora> buscarPorRutPaciente(@Param("rut") Long rut);
 
     //disponibilidad
-    @Query("SELECT COUNT(r) > 0 FROM ReservaHora r WHERE r.psicologo.id = :idPsico AND r.fecha = :fecha AND r.hora = :hora")
+    @Query("SELECT COUNT(r) > 0 FROM ReservaHora r WHERE r.psicologo.id = :idPsico AND r.fechaHora = :fechaHora")
     boolean existeCita(@Param("idPsico") Integer idPsico,
-                        @Param("fecha") LocalDate fecha,
-                        @Param("hora") LocalTime hora);
+                        @Param("fechaHora") LocalDateTime fechaHora);
 
 }

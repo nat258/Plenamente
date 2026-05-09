@@ -1,6 +1,6 @@
 package com.example.plenamente.DTO;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ReservaHoraDTO {
 
     private Integer id;
-    private LocalDate fechaHora;
+    private LocalDateTime fechaHora;
     private String estado;
 
     private Integer pacienteId;

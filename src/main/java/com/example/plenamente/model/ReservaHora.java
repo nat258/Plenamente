@@ -1,6 +1,6 @@
 package com.example.plenamente.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +29,7 @@ public class ReservaHora {
     private Integer id;
 
     @NotNull(message = "La fecha y hora de la reserva es obligatoria!")
-    private LocalDate fechaHora;
+    private LocalDateTime fechaHora;
 
     @NotBlank(message = "El estado de la reserva es obligatorio!")
     private String estado;

@@ -13,6 +13,9 @@ import com.example.plenamente.model.Psicologo;
 @Repository
 public interface PsicologoRepositary extends JpaRepository<Psicologo, Integer> {
 
+    List<Psicologo> findByRut(Long rut);
+
+
     // Buscar psicólogos por especialidad
     List<Psicologo> findByEspecialidadContainingIgnoreCase(String especialidad);
 
