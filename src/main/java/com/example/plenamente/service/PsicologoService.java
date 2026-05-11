@@ -18,23 +18,29 @@ public class PsicologoService {
     @Autowired
     private PsicologoRepositary psicologoRepositary;
 
-    public String eliminarPsicologo(Integer id) {
-        try {
-        Psicologo psicologo = psicologoRepositary.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Psicólogo no encontrado con el ID: " + id));
-            psicologoRepositary.delete(psicologo);
-            return "Psicólogo eliminado con éxito";
-        } catch (Exception e) {
-            return e.getMessage();
+    public String eliminarPsicologo(Long rut) {
+    try {
+        List<Psicologo> lista = psicologoRepositary.findByRut(rut);
+        
+        if (lista.isEmpty()) {
+            throw new RuntimeException("Psicólogo no encontrado con el RUT: " + rut);
         }
+
+        Psicologo psicologo = lista.get(0); // Tomamos el primero de la lista
+        psicologoRepositary.delete(psicologo);
+        
+        return "Psicólogo eliminado con éxito";
+    } catch (Exception e) {
+        return e.getMessage();
     }
+}
 
     public Psicologo guardarPsicologo(Psicologo psicologo) {
         validarPsicologo(psicologo);
         
         if (psicologo.getRut() != null) {
-            List<Psicologo> existentes = psicologoRepositary.findByRut(psicologo.getRut());
-            if (!existentes.isEmpty()) {
+            List<Psicologo> psicologoExistente = psicologoRepositary.findByRut(psicologo.getRut());
+            if (!psicologoExistente.isEmpty()) {
                 throw new RuntimeException("Ya existe un psicólogo registrado con el RUT: " + psicologo.getRut());
             }
         }
@@ -42,9 +48,12 @@ public class PsicologoService {
         return psicologoRepositary.save(psicologo);
     }
 
-    public Psicologo actualizarPsicologo(Integer id, Psicologo psicologoActualizado) {
-        Psicologo psicologoExistente = psicologoRepositary.findById(id)
-                .orElseThrow(() -> new RuntimeException("Psicólogo no encontrado con el ID: " + id));
+    public Psicologo actualizarPsicologo(Long rut, Psicologo psicologoActualizado) {
+        List<Psicologo> lista = psicologoRepositary.findByRut(rut);
+        if (lista.isEmpty()) {
+            throw new RuntimeException("Psicólogo no encontrado con el RUT: " + rut);
+        }
+        Psicologo psicologoExistente = lista.get(0);
 
         validarPsicologo(psicologoActualizado);
 
@@ -65,10 +74,12 @@ public class PsicologoService {
                 .toList();
     }
 
-    public PsicologoDTO buscarPsicologoPorId(Integer id){
-        Psicologo psicologo = psicologoRepositary.findById(id)
-                .orElseThrow(() -> new RuntimeException("Psicólogo no encontrado con ID: " + id));
-        return convertirADTO(psicologo);
+    public PsicologoDTO buscarPsicologoPorRut(Long rut){
+        List<Psicologo> lista = psicologoRepositary.findByRut(rut);
+        if (lista.isEmpty()) {
+            throw new RuntimeException("Psicólogo no encontrado con RUT: " + rut);
+        }
+        return convertirADTO(lista.get(0));
     }
 
     //convertir a dto
