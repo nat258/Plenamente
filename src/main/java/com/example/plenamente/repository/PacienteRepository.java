@@ -11,7 +11,7 @@ public interface PacienteRepository extends JpaRepository<Paciente,Integer>{
     List<Paciente> findByRut(Long rut);
 
     //Buscar por nombre y apellido
-    List<Paciente> findByNombreContainingIgnoreCaseOrApellidoContainingIgnoreCase(String nombre, String apellido);
+    List<Paciente> findByPNombreContainingIgnoreCaseOrPApellidoContainingIgnoreCase(String p_nombre, String p_apellido);
     //Busqueda por Rut 
     Optional<Paciente> findByRut(String rut);
     //Verificar si rut esta registrado 

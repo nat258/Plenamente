@@ -15,16 +15,15 @@ public interface PsicologoRepositary extends JpaRepository<Psicologo, Integer> {
 
     List<Psicologo> findByRut(Long rut);
 
-
     // Buscar psicólogos por especialidad
-    List<Psicologo> findByEspecialidadContainingIgnoreCase(String especialidad);
+    List<Psicologo> findByEspecialidadesContainingIgnoreCase(String especialidad);
 
     //buscar por especialidad con query
     @Query("SELECT p FROM Psicologo p JOIN p.especialidades e WHERE e.nombre = :nombreEsp")
     List<Psicologo> buscarPorEspecialidad(@Param("nombreEsp") String nombreEsp);
 
     // Buscar por nombre de psicologo
-    List<Psicologo> findByNombreContainingIgnoreCase(String p_nombre);
+    List<Psicologo> findByPNombreContainingIgnoreCase(String pNombre);
 
 
 }

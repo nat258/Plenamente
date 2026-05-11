@@ -42,8 +42,6 @@ public class PacienteService {
     if (!listaPacientes.isEmpty()) {
         throw new RuntimeException("El RUT " + paciente.getRut() + " ya se encuentra registrado en el sistema.");
     }
-    
-    // 4. Si llegamos aquí, es porque no existe, así que guardamos
     return pacienteRepositary.save(paciente);
 }
 
@@ -56,11 +54,11 @@ public class PacienteService {
 
         validarPaciente(datosNuevos);
 
-        // Actualizamos los campos (excepto el RUT si no quieres que cambie)
-        pacienteExistente.setP_nombre(datosNuevos.getP_nombre());
-        pacienteExistente.setP_apellido(datosNuevos.getP_apellido());
-        pacienteExistente.setCorreo(datosNuevos.getCorreo());
-        pacienteExistente.setPrevision(datosNuevos.getPrevision());
+    pacienteExistente.setRut(pacienteActualizado.getRut());
+    pacienteExistente.setPNombre(pacienteActualizado.getPNombre());
+    pacienteExistente.setPApellido(pacienteActualizado.getPApellido());
+    pacienteExistente.setCorreo(pacienteActualizado.getCorreo());
+    pacienteExistente.setPrevision(pacienteActualizado.getPrevision());
 
         return pacienteRepositary.save(pacienteExistente);
     }
@@ -96,8 +94,8 @@ public List<PacienteDTO> buscarPacientesPorRut(Long rut) {
     PacienteDTO dto = new PacienteDTO();
     dto.setId(paciente.getId());
     dto.setRut(paciente.getRut());
-    dto.setP_nombre(paciente.getP_nombre());
-    dto.setP_apellido(paciente.getP_apellido());
+    dto.setP_nombre(paciente.getPNombre());
+    dto.setP_apellido(paciente.getPApellido());
     dto.setCorreo(paciente.getCorreo());
     
     if (paciente.getPrevision() != null) {
@@ -116,7 +114,7 @@ public List<PacienteDTO> buscarPacientesPorRut(Long rut) {
         }
         
         // Validación para String (Nombre)
-        if (paciente.getP_nombre() == null || paciente.getP_nombre().trim().isEmpty()) {
+        if (paciente.getPNombre() == null || paciente.getPNombre().trim().isEmpty()) {
             throw new RuntimeException("El nombre es obligatorio.");
         }
 
