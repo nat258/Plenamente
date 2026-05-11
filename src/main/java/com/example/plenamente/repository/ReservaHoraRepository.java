@@ -1,12 +1,6 @@
 package com.example.plenamente.repository;
-<<<<<<< HEAD
+import java.time.LocalDateTime;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-=======
-import java.time.LocalDateTime;
->>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,6 +20,7 @@ public interface ReservaHoraRepository extends JpaRepository<ReservaHora, Intege
     List<ReservaHora> buscarPorRutPaciente(@Param("rut") Long rut);
 
     //disponibilidad
+
     @Query("SELECT COUNT(r) > 0 FROM ReservaHora r WHERE r.psicologo.id = :idPsico AND r.fechaHora = :fechaHora")
     boolean existeCita(@Param("idPsico") Integer idPsico,
                         @Param("fechaHora") LocalDateTime fechaHora);

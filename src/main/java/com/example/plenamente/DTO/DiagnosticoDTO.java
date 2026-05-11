@@ -12,5 +12,4 @@ public class DiagnosticoDTO {
     private String nombre;
     private String descripcion;
 
-    //duda
 }

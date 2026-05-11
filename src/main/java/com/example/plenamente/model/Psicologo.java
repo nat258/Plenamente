@@ -44,18 +44,18 @@ public class Psicologo {
 
     @NotBlank(message = "El primer nombre es obligatorio!")
     @Size(min = 3, message = "El primer nombre debe contener al menos 3 caracteres!")
-    private String p_nombre;
+    private String pNombre;
 
     @Size(min = 3, message = "El segundo nombre debe contener al menos 3 caracteres!")
-    private String s_nombre;
+    private String sNombre;
 
     @NotBlank(message = "El primer apellido es obligatorio!")
     @Size(min = 3, message = "El primer apellido debe contener al menos 3 caracteres!")
-    private String p_apellido;
+    private String pApellido;
 
     @NotBlank(message = "El segundo apellido es obligatorio!")
     @Size(min = 3, message = "El segundo apellido debe contener al menos 3 caracteres!")
-    private String s_apellido;
+    private String sApellido;
 
     @OneToMany(mappedBy = "psicologo")
     private List<ReservaHora> reservas;

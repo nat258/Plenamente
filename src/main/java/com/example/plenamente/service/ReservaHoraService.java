@@ -134,11 +134,11 @@ public class ReservaHoraService {
     
     if (reserva.getPaciente() != null) {
         dto.setPacienteId(reserva.getPaciente().getId());
-        dto.setPacienteNombre(reserva.getPaciente().getP_nombre() + " " + reserva.getPaciente().getP_apellido());
+        dto.setPacienteNombre(reserva.getPaciente().getPNombre() + " " + reserva.getPaciente().getPApellido());
     }
     if (reserva.getPsicologo() != null) {
         dto.setPsicologoId(reserva.getPsicologo().getId());
-        dto.setPsicologoNombre(reserva.getPsicologo().getP_nombre() + " " + reserva.getPsicologo().getP_apellido());
+        dto.setPsicologoNombre(reserva.getPsicologo().getPNombre() + " " + reserva.getPsicologo().getPApellido());
     }
     return dto;
 <<<<<<< HEAD

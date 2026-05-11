@@ -1,4 +1,4 @@
-package com.example.plenamente.repository;
+    package com.example.plenamente.repository;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,10 +9,7 @@ public interface ComunaRepository extends JpaRepository<Comuna,Integer> {
     
     // Busqueda de comuna por nombre exacto
     List<Comuna> FindByNombre(String nombre);
-<<<<<<< HEAD
-=======
-    
->>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
+  
     //Buscar comuna que contenga parte del nombre
     List<Comuna> findByNombreContainingIgnoreCase(String nombre);
 

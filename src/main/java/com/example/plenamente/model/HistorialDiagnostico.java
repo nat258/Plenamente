@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -34,7 +33,8 @@ public class HistorialDiagnostico {
     @Size(max = 100, message = "La observacion debe contener maximo 100 caracteres!")
     private String observacion;
 
-    @OneToOne(mappedBy = "historialDiagnostico")
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
     @ManyToOne
