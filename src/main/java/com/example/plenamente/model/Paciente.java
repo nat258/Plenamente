@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -44,18 +43,18 @@ public class Paciente {
 
     @NotBlank(message = "El primer nombre es obligatorio!")
     @Size(min = 3, message = "El primer nombre debe contener al menos 3 caracteres!")
-    private String p_nombre;
+    private String pNombre;
 
     @Size(min = 3, message = "El segundo nombre debe contener al menos 3 caracteres!")
-    private String s_nombre;
+    private String sNombre;
 
     @NotBlank(message = "El primer apellido es obligatorio!")
     @Size(min = 3, message = "El primer apellido debe contener al menos 3 caracteres!")
-    private String p_apellido;
+    private String pApellido;
 
     @NotBlank(message = "El segundo apellido es obligatorio!")
     @Size(min = 3, message = "El segundo apellido debe contener al menos 3 caracteres!")
-    private String s_apellido;
+    private String sApellido;
 
     @Email(message = "Debe ingresar un correo electronico valido! ejemplo@example.com")
     @NotBlank(message = "El correo electronico es obligatorio!")
@@ -69,9 +68,8 @@ public class Paciente {
     @NotBlank(message = "La direccion es obligatoria!")
     private String direccion;
 
-    @OneToOne
-    @JoinColumn(name = "historialDiagnostico_id")
-    private HistorialDiagnostico historialDiagnostico;
+    @OneToMany(mappedBy = "paciente")
+    private List<HistorialDiagnostico> historialesDiagnostico;
 
     @OneToMany(mappedBy = "paciente")
     private List<ReservaHora> reservas;

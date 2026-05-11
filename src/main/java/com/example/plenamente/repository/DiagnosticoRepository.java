@@ -11,6 +11,6 @@ public interface DiagnosticoRepository extends JpaRepository<Diagnostico,Integer
     //Buscar diagnósticos que contengan una palabra clave en el nombre
     List<Diagnostico> findByNombreContainingIgnoreCase(String nombre);
     // Buscar por nombre exacto (útil para validaciones)
-    Optional<Diagnostico> findByNombre(String nombre);
+    Optional<Diagnostico> findByNombreIgnoreCase(String nombre);
 
 }

@@ -13,7 +13,6 @@ public interface PrevisionRepositary extends JpaRepository<Prevision, Integer> {
 
     List<Prevision> findByTipo(String tipo);
 
-
     //buscar prevenssion por nombre
     Prevision findByTipoContainingIgnoreCase(String nombre);
 

@@ -49,8 +49,8 @@ public class PsicologoService {
         validarPsicologo(psicologoActualizado);
 
         psicologoExistente.setRut(psicologoActualizado.getRut());
-        psicologoExistente.setP_nombre(psicologoActualizado.getP_nombre());
-        psicologoExistente.setP_apellido(psicologoActualizado.getP_apellido());
+        psicologoExistente.setPNombre(psicologoActualizado.getPNombre());
+        psicologoExistente.setPApellido(psicologoActualizado.getPApellido());
         psicologoExistente.setEspecialidades(psicologoActualizado.getEspecialidades());
 
         return psicologoRepositary.save(psicologoExistente);
@@ -75,8 +75,8 @@ public class PsicologoService {
     private PsicologoDTO convertirADTO(Psicologo psicologo) {
     PsicologoDTO dto = new PsicologoDTO();
     dto.setId(psicologo.getId());
-    dto.setP_nombre(psicologo.getP_nombre());
-    dto.setP_apellido(psicologo.getP_apellido());
+    dto.setP_nombre(psicologo.getPNombre());
+    dto.setP_apellido(psicologo.getPApellido());
     
     // Mapeo de listas (Especialidades)
     if (psicologo.getEspecialidades() != null) {
@@ -90,10 +90,10 @@ public class PsicologoService {
         if (psicologo.getRut() == null || psicologo.getRut() <= 0) {
             throw new RuntimeException("El RUT es obligatorio para el registro profesional.");
         }
-        if (psicologo.getP_nombre() == null || psicologo.getP_nombre().trim().isEmpty()) {
+        if (psicologo.getPNombre() == null || psicologo.getPNombre().trim().isEmpty()) {
             throw new RuntimeException("El nombre es obligatorio.");
         }
-        if (psicologo.getP_apellido() == null || psicologo.getP_apellido().trim().isEmpty()) {
+        if (psicologo.getPApellido() == null || psicologo.getPApellido().trim().isEmpty()) {
             throw new RuntimeException("El apellido es obligatorio.");
         }
         // Validación opcional: verificar que tenga al menos una especialidad
