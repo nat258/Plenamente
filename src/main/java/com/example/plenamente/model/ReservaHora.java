@@ -2,6 +2,10 @@ package com.example.plenamente.model;
 
 import java.time.LocalDateTime;
 
+<<<<<<< HEAD
+=======
+import jakarta.persistence.CascadeType;
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,7 +46,11 @@ public class ReservaHora {
     @JoinColumn(name = "psicologo_id")
     private Psicologo psicologo;
 
+<<<<<<< HEAD
     @OneToOne
+=======
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
     @JoinColumn(name = "boleta_id")
     private Boleta boleta;
 

@@ -8,7 +8,8 @@ import com.example.plenamente.model.Comuna;
 public interface ComunaRepository extends JpaRepository<Comuna,Integer> {
     
     // Busqueda de comuna por nombre exacto
-    List<Comuna> findByNombre(String nombre);
+    List<Comuna> FindByNombre(String nombre);
+  
     //Buscar comuna que contenga parte del nombre
     List<Comuna> findByNombreContainingIgnoreCase(String nombre);
 

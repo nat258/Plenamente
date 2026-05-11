@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+
 import org.springframework.stereotype.Service;
 
 import com.example.plenamente.DTO.HistorialDiagnosticoDTO;
 import com.example.plenamente.model.HistorialDiagnostico;
+
 import com.example.plenamente.repository.DiagnosticoRepository;
 import com.example.plenamente.repository.HistorialDiagnosticoRepository;
 import com.example.plenamente.repository.PacienteRepository;
@@ -24,8 +26,6 @@ public class HistorialDiagnosticoService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    @Autowired
-    private DiagnosticoRepository diagnosticoRepository;
 
     public List<HistorialDiagnosticoDTO> obtenerTodo() {
         return historialDiagnosticoRepository.findAll().stream()

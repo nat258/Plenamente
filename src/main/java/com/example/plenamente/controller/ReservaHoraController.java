@@ -71,6 +71,17 @@ public class ReservaHoraController {
             reservaHoraService.eliminarReserva(id);
             return new ResponseEntity<>("Reserva eliminada exitosamente", HttpStatus.OK);
         } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+            
+    }
+
+    @DeleteMapping("/reserva/{reservaId}/boleta")
+    public ResponseEntity<String> quitarBoleta(@PathVariable Integer reservaId) {
+        try {
+            String mensaje = reservaHoraService.eliminarBoletaDeReserva(reservaId);
+            return new ResponseEntity<>(mensaje, HttpStatus.OK);
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
