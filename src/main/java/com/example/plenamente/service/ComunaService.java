@@ -18,7 +18,6 @@ public class ComunaService {
 @Autowired
     private ComunaRepository comunaRepository;
 
-<<<<<<< HEAD
     public String eliminarComuna(Integer id) {
         try {
         Comuna comuna = comunaRepository.findById(id)
@@ -43,9 +42,7 @@ public class ComunaService {
 
         return comunaRepository.save(comunaExistente);
     }
-=======
->>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
-
+    
     //Buscar comuna por ID
     public ComunaDTO buscarPorId(Integer id) {
     Comuna comuna = comunaRepository.findById(id)
@@ -63,23 +60,15 @@ public class ComunaService {
 
     // Buscar comuna que contenga parte del nombre (Busca coincidencias parciales)
     public List<ComunaDTO> buscarPorNombreParcial(String nombre) {
-<<<<<<< HEAD
-    return comunaRepository.findByNombreContainingIgnoreCase(nombre).stream()
-=======
         List<Comuna> comunas = comunaRepository.findByNombreContainingIgnoreCase(nombre);
         if(comunas.isEmpty()){
             throw new RuntimeException("No se encontraron comunas que contengan: " + nombre);
         }
         return comunas.stream()
->>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
             .map(this::convertirADTO)
             .toList();
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
     //convertir dto
     private ComunaDTO convertirADTO(Comuna comuna) {
     ComunaDTO dto = new ComunaDTO();
