@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.plenamente.DTO.PrevisionDTO;
 import com.example.plenamente.model.Prevision;
+<<<<<<< HEAD
 import com.example.plenamente.repository.PrevisionRepositary;
+=======
+import com.example.plenamente.repository.PrevisionRepository;
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 
 import jakarta.transaction.Transactional;
 
@@ -16,7 +20,11 @@ import jakarta.transaction.Transactional;
 public class PrevisionService {
 
     @Autowired
+<<<<<<< HEAD
     private PrevisionRepositary previsionRepositary;
+=======
+    private PrevisionRepository previsionRepositary;
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 
     
     public String eliminarPrevision(Integer id) {

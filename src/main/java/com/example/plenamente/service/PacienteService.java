@@ -20,12 +20,19 @@ public class PacienteService {
 
     
 
+<<<<<<< HEAD
     public String eliminarPacientePorRut(Long rut) {
         try {
             Paciente paciente = pacienteRepositary.findByRut(rut)
                     .stream()
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Paciente no encontrado con el RUT: " + rut));
+=======
+    public String eliminarPaciente(Integer id) {
+        try {
+            Paciente paciente = pacienteRepositary.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Paciente no encontrado con el ID: " + id));
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
             pacienteRepositary.delete(paciente);
             return "Paciente eliminado con éxito";
         } catch (Exception e) {
@@ -47,6 +54,7 @@ public class PacienteService {
     return pacienteRepositary.save(paciente);
 }
 
+<<<<<<< HEAD
 
     public Paciente actualizarPacientePorRut(Long rut, Paciente datosNuevos) {
         Paciente pacienteExistente = pacienteRepositary.findByRut(rut)
@@ -65,6 +73,31 @@ public class PacienteService {
         return pacienteRepositary.save(pacienteExistente);
     }
 
+=======
+    
+
+    public Paciente actualizarPaciente(Integer id, Paciente pacienteActualizado) {
+    Paciente pacienteExistente = pacienteRepositary.findById(id)
+            .orElseThrow(() -> new RuntimeException("Paciente no encontrado con el ID: " + id));
+
+    validarPaciente(pacienteActualizado);
+
+    if (!pacienteExistente.getRut().equals(pacienteActualizado.getRut())) {
+        if (!pacienteRepositary.findByRut(pacienteActualizado.getRut()).isEmpty()) {
+            throw new RuntimeException("El nuevo RUT ya pertenece a otro paciente.");
+        }
+    }
+
+    pacienteExistente.setRut(pacienteActualizado.getRut());
+    pacienteExistente.setP_nombre(pacienteActualizado.getP_nombre());
+    pacienteExistente.setP_apellido(pacienteActualizado.getP_apellido());
+    pacienteExistente.setCorreo(pacienteActualizado.getCorreo());
+    pacienteExistente.setPrevision(pacienteActualizado.getPrevision());
+
+    return pacienteRepositary.save(pacienteExistente);
+}
+
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 
     //DTO
 
@@ -75,11 +108,17 @@ public class PacienteService {
         }
 
 
+<<<<<<< HEAD
     public PacienteDTO buscarPorRut(Long rut) {
         Paciente paciente = pacienteRepositary.findByRut(rut)
                 .stream()
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Paciente no encontrado con el RUT: " + rut));
+=======
+    public PacienteDTO buscarPacientePorId(Integer id){
+        Paciente paciente = pacienteRepositary.findById(id)
+                .orElseThrow(() -> new RuntimeException("Paciente no encontrado con ID: " + id));
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
         return convertirADTO(paciente);
     }
 

@@ -1,8 +1,12 @@
 package com.example.plenamente.repository;
+<<<<<<< HEAD
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+=======
+import java.time.LocalDateTime;
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;

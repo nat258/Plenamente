@@ -1,4 +1,5 @@
 package com.example.plenamente.service;
+<<<<<<< HEAD
 
 import java.util.List;
 
@@ -9,14 +10,34 @@ import com.example.plenamente.DTO.BoletaDTO;
 import com.example.plenamente.model.Boleta;
 import com.example.plenamente.repository.BoletaRepository;
 
+=======
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.plenamente.DTO.BoletaDTO;
+import com.example.plenamente.model.Boleta;
+import com.example.plenamente.model.ReservaHora;
+import com.example.plenamente.repository.BoletaRepository;
+import com.example.plenamente.repository.ReservaHoraRepository;
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 public class BoletaService {
+<<<<<<< HEAD
 @Autowired
     private BoletaRepository boletaRepository;
 
+=======
+
+    @Autowired
+    private BoletaRepository boletaRepository;
+
+    @Autowired
+    private ReservaHoraRepository reservaHoraRepository;
+
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
     public List<BoletaDTO>obtenerBoletas(){
         return boletaRepository.findAll().stream()
             .map(this::convertirADTO)
@@ -29,6 +50,7 @@ public class BoletaService {
         return convertirADTO(boleta);
     }
 
+<<<<<<< HEAD
     public String eliminar(Integer id){
         try{
             Boleta boleta = boletaRepository.findById(id)
@@ -68,10 +90,40 @@ public class BoletaService {
     //Busqueda por monto exacto .
     public List<BoletaDTO>BuscarMontoExacto(Integer monto){
         return boletaRepository.findByMonto(monto).stream()
+=======
+    public String eliminar(Integer id) {
+    Boleta boleta = boletaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("No es posible eliminar la boleta con ID " + id + ". No existe."));
+    boletaRepository.delete(boleta);
+    return "La boleta " + id + " ha sido eliminada exitosamente.";
+    }
+
+    public BoletaDTO guardarBoleta(BoletaDTO boletaDTO){
+        ReservaHora reserva = reservaHoraRepository.findById(boletaDTO.getReservaHoraId())
+            .orElseThrow(() -> new RuntimeException("No se encontro la reserva con ID:" + boletaDTO.getReservaHoraId()));
+        Boleta boleta = new Boleta();
+        boleta.setTipoPago(boletaDTO.getTipoPago());
+        boleta.setMonto(boletaDTO.getMonto());
+        boleta.setReservaHora(reserva);
+        reserva.setBoleta(boleta);
+        Boleta boletaGuardada = boletaRepository.save(boleta);
+        return convertirADTO(boletaGuardada);
+    }
+
+
+    //Busqueda por monto exacto .
+    public List<BoletaDTO>buscarMontoExacto(Integer monto){
+        List<Boleta> boletas = boletaRepository.findByMonto(monto);
+        if (boletas.isEmpty()){
+            throw new RuntimeException("No se encontraron boletas con el monto " + monto);
+        }
+        return boletas.stream()
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
                 .map(this::convertirADTO)
                 .toList();
     }
     
+<<<<<<< HEAD
     //Busqueda por monto superior
     public List<BoletaDTO>porMontoSuperior(Integer nivelMinimo){
         return boletaRepository.findByPorMontoSuperior(nivelMinimo).stream()
@@ -79,6 +131,8 @@ public class BoletaService {
                 .toList();
     }
 
+=======
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
     //Convertir a DTO
     private BoletaDTO convertirADTO(Boleta boleta) {
     BoletaDTO dto = new BoletaDTO();

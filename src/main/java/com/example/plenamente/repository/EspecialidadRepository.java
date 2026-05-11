@@ -12,7 +12,10 @@ public interface EspecialidadRepository extends JpaRepository<Especialidad,Integ
     //Buscar todas las especialidades que tiene un Psicologo especifico 
     List<Especialidad> findByPsicologosId(Integer idPsicologo);
 
+<<<<<<< HEAD
     
 
 
+=======
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
 }

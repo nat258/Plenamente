@@ -31,3 +31,39 @@ build/
 
 ### VS Code ###
 .vscode/
+<<<<<<< HEAD
+=======
+.idea/
+
+# --- Compilados y Binarios ---
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# --- Herramientas de Construcción ---
+.gradle/
+/build/
+!gradle-wrapper.jar
+.mvn/
+/target/
+
+# --- Configuración de IDE (VS Code / IntelliJ / Eclipse) ---
+.vscode/
+.idea/
+*.iml
+*.iws
+.settings/
+.classpath
+.project
+bin/
+
+# --- Sistema y Logs ---
+log/
+*.log
+.DS_Store
+Thumbs.db
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)

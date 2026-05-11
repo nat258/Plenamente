@@ -9,6 +9,10 @@ public interface ComunaRepository extends JpaRepository<Comuna,Integer> {
     
     // Busqueda de comuna por nombre exacto
     List<Comuna> FindByNombre(String nombre);
+<<<<<<< HEAD
+=======
+    
+>>>>>>> f6c8ec0 (Inclusion de ultimos services y controller  enn rama nataly)
     //Buscar comuna que contenga parte del nombre
     List<Comuna> findByNombreContainingIgnoreCase(String nombre);
 
